@@ -1,0 +1,10 @@
+---
+- hosts: localhost
+  tasks:
+    - name: --- yum list outstring ---
+      yum:
+        list: zabbix
+      register: yum_out
+
+    - name: --- testing shell vars ---
+      shell: 'echo {{yum_out}} > ./log'

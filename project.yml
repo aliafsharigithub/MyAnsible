@@ -1,0 +1,36 @@
+---
+- name: project maker
+  hosts: localhost
+  become: yes
+  tasks:
+    - name: directory
+      file:
+        path: "/home/ans/ansible/provision/roles/{{ prname }}/{{ item }}"
+        state: directory
+        mode: 0755
+        owner: ans
+        group: ans
+      loop:
+        - vars
+        - tasks
+        - defaults
+        - meta
+        - files
+        - templates
+        - handlers
+      tags: directories
+
+    - name: Create main.yml files where needed
+      file:
+        path: "/home/ans/ansible/provision/roles/{{ prname }}/{{ item }}/main.yml"
+        mode: 0755
+        state: touch
+        owner: ans
+        group: ans
+      loop:
+        - vars
+        - defaults
+        - handlers
+        - tasks
+      tags: main.yml
+
