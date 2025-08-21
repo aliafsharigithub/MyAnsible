@@ -1,0 +1,3 @@
+###	outlining the tasks	###
+title: ------ installing ------
+
