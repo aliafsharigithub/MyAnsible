@@ -1,5 +1,5 @@
 ---
-- hosts: all
+- hosts: Docker
   gather_facts: yes
   roles:
-   - prep
+   - dockerprep

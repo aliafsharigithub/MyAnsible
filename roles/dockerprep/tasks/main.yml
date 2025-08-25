@@ -1,0 +1,20 @@
+---
+- name: ----- Docker Script For Ubuntu ------
+  script: get-docker.sh
+  tags: send_script
+
+#- name: ----- checking if the file transfared correctly -----
+#  stat:
+#    path: /home/dckr/Desktop/get-docker.sh
+#  register: file_check
+#  tags: file_check
+#
+#- name: ---- result -----
+#  debug:
+#    msg: '{{file_check}}'
+#  tags: file_check
+#
+#- name: ----- Running The Docker Script -----
+#  shell: sh /home/dckr/Desktop/get-docker.sh
+#  tags: run_script
+#
