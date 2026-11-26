@@ -1,0 +1,55 @@
+---
+
+- name: ------------------ Creating a directory in /home ------------------
+  file:
+    path: "/home/{{ mypj }}"
+    state: directory
+    mode: '0755'
+  tags: base_dir
+
+- name: ------------------ Creating a directory in /inventory ------------------
+  file:
+    path: "/home/{{ mypj }}/inventory"
+    state: directory
+    mode: '0755'
+  tags: inv
+
+- name: ------------------ Creating hosts  ------------------
+  file:
+    path: "/home/{{ mypj }}/inventory/hosts"
+    state: touch
+    mode: '0644'
+  tags: host
+
+- name: ------------------ Creating Roles dir ------------------
+  file:
+    path: "/home/{{ mypj }}/roles/myproject/{{ item }}"
+    state: directory
+    mode: '0755'
+  loop:
+    - defaults
+    - files
+    - handlers
+    - meta
+    - tasks
+    - templates
+    - vars
+  tags: sub_dir
+
+- name: ------------------ Touching subfiles ------------------
+  file:
+    path: "/home/{{ mypj }}/roles/myproject/{{ item }}/main.yml"
+    state: touch
+    mode: '0644'
+  loop:
+    - defaults
+    - handlers
+    - meta
+    - tasks
+    - vars
+  tags: sub_files
+
+
+
+
+
